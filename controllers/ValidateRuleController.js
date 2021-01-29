@@ -13,9 +13,9 @@ export const validateData = asyncHandler(async(req, res) =>
     {
         res.status(400);
         res.json(errors);
-    } else {
+    } else 
+    {
         const fieldErrors = ValidateFieldDTO(req.body);
-        console.log("respnse ", fieldErrors);
-        res.send("yo great");
+        res.send(fieldErrors);
     }
 });
