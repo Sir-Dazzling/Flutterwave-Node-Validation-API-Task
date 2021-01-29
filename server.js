@@ -1,9 +1,10 @@
-import express from 'express';
-import colors from 'colors';
 import dotenv from "dotenv";
+import express from 'express';
 import morgan from 'morgan';
-
+import { errorHandler, notFound } from './middleware/ErrorMiddleware.js';
 import BaseRoutes from './routes/BaseRoute.js';
+import ValidateRuleRoutes from './routes/ValidateRuleRoutes.js';
+import colors from 'colors';
 
 dotenv.config();
 
@@ -18,6 +19,11 @@ if(process.env.NODE_ENV === "development")
 app.use(express.json());
 
 app.use("/", BaseRoutes);
+app.use("/validate-rule", ValidateRuleRoutes);
+
+// Middlewares on Root of Api
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

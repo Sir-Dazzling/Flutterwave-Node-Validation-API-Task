@@ -1,9 +1,9 @@
 import express from 'express';
-import {getMyInfo} from '../controllers/BaseController.js';
+import { validateData } from '../controllers/ValidateRuleController.js';
 import {notFound} from '../middleware/ErrorMiddleware.js';
 
 const router = express.Router();
 
-router.route("/").get(getMyInfo);
+router.route("/").post(validateData);
 
 export default router;
