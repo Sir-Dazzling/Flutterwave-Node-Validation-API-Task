@@ -3,7 +3,7 @@ export const notFound = (req, res, next) =>
 {
     res.status(404);
     res.json({
-      "message": `Not Found - ${req.originalUrl}`,
+      "message": `Not Found - ${req.method} ${req.originalUrl}`,
       "status": "error",
       "data": null
     });
